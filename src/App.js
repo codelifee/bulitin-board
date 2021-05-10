@@ -12,15 +12,15 @@ function App() {
     <div className="App">
       <Router>
         <Switch>
-          <Router exact path="/">
+          <Route exact path="/">
             <BoardViews />
-          </Router>
-          <Router path="/content/:boardId">
+          </Route>
+          <Route path="/content/:boardId">
             <BoardContent />
-          </Router>
-          <Router path="/register">
+          </Route>
+          <Route path="/register">
             <BoardRegister />
-          </Router>
+          </Route>
         </Switch>
       </Router>
     </div>

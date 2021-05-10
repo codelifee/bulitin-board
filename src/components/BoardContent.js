@@ -57,50 +57,41 @@ function BoardContent() {
     const [board, setBoard] = useState({});
     
     const classes = useStyles();
-    const boardId = useParams();
+    const boardId = useParams().boardId;
 
     async function fetchBoardData() {
         const request = await axios.get(`board/${boardId}`)
         .then(res => {
-            console.log(res)
-            
+            setBoard(res.data[0])
+
         })
         .catch(err => console.log(err))
     
         return request;
     }
 
-    async function fetchUserId() {
-        const request = await axios.get(`user/${board.user_no}`)
-        .then(res => {
-            
-        })
-        .catch(err => console.log(err))
-    
-        return request;
-        }
 
     useEffect(() => {
         fetchBoardData();
-        
+    
     }, [])
 
-    console.log(boardId)
+    console.log(board)
 
 
     return (
         <div className={classes.root}> 
             <div className={classes.boardContent}>
                 <div className={classes.header}>
-                    <div>user_name : </div>
-                    <div>board_no : </div>
+                    <div>user_name : {board.user_no} </div>
+                    <div>board_no : {board.board_no}</div>
                 </div>
                 <div>
                     <div>
                         title
                     </div>
                     <div className={classes.smallBox}>
-                        sdfasdas
+                        {board.board_title}
                     </div>
                 </div>
                 <div>
@@ -108,12 +99,13 @@ function BoardContent() {
                         date
                     </div>
                     <div className={classes.smallBox} >
+                        {board.board_regdate}
                     </div>
                 </div>
                 <div className={classes.content}>
                     content
                     <div className={classes.box}>
-                        
+                        {board.board_content}
                     </div>
                 </div>
             </div>

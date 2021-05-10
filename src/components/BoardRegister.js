@@ -1,6 +1,8 @@
 import React, {useState} from 'react'
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import createStyles from '@material-ui/core/styles/createStyles';
+import axios from '../axios/axios';
+
 
 const useStyles = makeStyles((theme) => 
 
@@ -73,8 +75,29 @@ function BoardRegister() {
 
     const classes = useStyles();
     
-    const [form, setForm] = useState({});
+    const [form, setForm] = useState({
+        user_no: "1"
+    });
 
+    const postBoard = () => {
+
+        axios
+        .post("board", form)
+        .then((res) => console.log(res))
+        .catch((err) => console.log(err));
+  };
+
+    const handleChange = (e) => {
+        console.log(e.target.name)
+
+        e.preventDefault();
+          setForm({
+            ...form,
+            [e.target.name]: e.target.value
+          });
+    
+          console.log(form)
+      };
 
     return (
         <div className={classes.root}>
@@ -85,7 +108,10 @@ function BoardRegister() {
                         user id
                     </div>
                     <div className={classes.smallBox}>
-                        <input className={classes.smallInput} type="textarea" />
+                        <input 
+                        name="user_no"
+                        onChange={handleChange}
+                        className={classes.smallInput} type="textarea" />
                     </div>
                 </div>
                 <div>
@@ -93,7 +119,10 @@ function BoardRegister() {
                         board title
                     </div>
                     <div className={classes.smallBox}>
-                        <textarea className={classes.smallInput} type="textarea" />
+                        <textarea 
+                        name="title"
+                        onChange={handleChange}
+                        className={classes.smallInput} type="textarea" />
                     </div>
                 </div>
                 <div>
@@ -101,11 +130,16 @@ function BoardRegister() {
                         board content
                     </div>
                     <div className={classes.box}>
-                        <textarea className={classes.input} type="textarea" />
+                        <textarea 
+                        name="content"
+                        onChange={handleChange}
+                        className={classes.input} type="textarea" />
                     </div>
                 </div>
                 <div>
-                    <button className={classes.button}>Register</button>
+                    <button
+                    onClick={postBoard}
+                    className={classes.button}>Register</button>
                 </div>
             </div>
         </div>
