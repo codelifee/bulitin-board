@@ -23,8 +23,8 @@ function BoardView({board_no, user_no, board_title, board_content, board_regdate
           <TableCell>{board_title}</TableCell>
           <TableCell>{board_content}</TableCell>
           <TableCell>{board_regdate}</TableCell>
-          <TableCell onClick={redirect}>내용 보기</TableCell>
-          <TableCell>삭제하기</TableCell>
+          <TableCell onClick={redirect} style={{cursor: 'pointer'}}>내용 보기</TableCell>
+          <TableCell style={{cursor: 'pointer'}}>삭제하기</TableCell>
         </TableRow>
       </>
     )

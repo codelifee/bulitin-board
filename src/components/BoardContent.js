@@ -22,7 +22,8 @@ const useStyles = makeStyles((theme) =>
         header: {
             display: 'flex',
             justifyContent: 'space-around',
-            width: '100%'
+            width: 820,
+            marginBottom: 20
         },
         box: {
             background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',

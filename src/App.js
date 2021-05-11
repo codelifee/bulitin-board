@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import BoardViews from './components/BoardViews'
 import BoardRegister from './components/BoardRegister'
 import BoardContent from './components/BoardContent'
+import Counter from './components/Counter'
 
 function App() {
 
@@ -20,6 +21,9 @@ function App() {
           </Route>
           <Route path="/register">
             <BoardRegister />
+          </Route>
+          <Route path="/counter">
+            <Counter />
           </Route>
         </Switch>
       </Router>
