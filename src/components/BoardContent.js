@@ -2,8 +2,9 @@ import React, {useEffect, useState} from 'react'
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import createStyles from '@material-ui/core/styles/createStyles';
 import { findByLabelText } from '@testing-library/dom';
-import axios from '../axios/axios';
+import axios from 'axios/axios';
 import { useParams } from "react-router-dom";
+
 
 const useStyles = makeStyles((theme) => 
 

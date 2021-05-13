@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import createStyles from '@material-ui/core/styles/createStyles';
-import axios from '../axios/axios';
+import axios from 'axios/axios';
 
 
 const useStyles = makeStyles((theme) => 
@@ -83,7 +83,11 @@ function BoardRegister() {
 
         axios
         .post("board", form)
-        .then((res) => console.log(res))
+        .then((res) => {
+            console.log(res)
+            window.location.reload()
+            alert("register completed")
+        })
         .catch((err) => console.log(err));
   };
 

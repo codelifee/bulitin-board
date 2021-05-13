@@ -1,4 +1,4 @@
-import axios from '../axios/axios';
+import axios from 'axios/axios';
 import React, {useState, useEffect} from 'react'
 import BoardView from "./BoardView"
 import TableRow from '@material-ui/core/TableRow'
@@ -8,6 +8,8 @@ import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import createStyles from '@material-ui/core/styles/createStyles';
+import { useHistory } from "react-router-dom";
+
 
 
 const useStyles = makeStyles((theme) => 
@@ -20,6 +22,18 @@ const useStyles = makeStyles((theme) =>
         table: {
             minWidth: 1080,
             height: 800
+        },
+        button: {
+            background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
+            border: 0,
+            borderRadius: 3,
+            boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+            color: 'white',
+            height: 30,
+            width: 180,
+            marginLeft: 20,
+            padding: '0 30px',
+            cursor: 'pointer'
         }
     })
 )
@@ -27,10 +41,13 @@ const useStyles = makeStyles((theme) =>
 function BoardViews() {
     const [boards, setBoards] = useState(null);
 
+    const history = useHistory();
+
     const classes = useStyles();
 
-    const handleView = () => {
-        
+    const handleNewBoard = () => {
+            history.push(`/register`);
+            window.location.reload();
     }
 
     async function fetchData() {
@@ -51,8 +68,8 @@ function BoardViews() {
 
 
     return (
-
         <Paper className={classes.root}>
+            <button className={classes.button} onClick={handleNewBoard}>Write a new board</button>
             <Table className={classes.table}>
                 <TableHead>
                     <TableRow>

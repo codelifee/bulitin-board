@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { increment } from '../redux/actions/counter'
+import { increment } from 'redux/actions/counter'
 
 function Counter() {
     
